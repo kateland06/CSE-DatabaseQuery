@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Accredidation body:</strong>
+  <%= @program_educational_objective.accredidation_body %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @program_educational_objective.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @program_educational_objective.description %>
+</p>
+
+<p>
+  <strong>Year added:</strong>
+  <%= @program_educational_objective.year_added %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @program_educational_objective.active %>
+</p>
+
+<p>
+  <strong>Correct answers:</strong>
+  <%= @program_educational_objective.correct_answers %>
+</p>
+
+<p>
+  <strong>Incorrect answers:</strong>
+  <%= @program_educational_objective.incorrect_answers %>
+</p>
+
+<p>
+  <strong>Temp correct answer:</strong>
+  <%= @program_educational_objective.temp_correct_answer %>
+</p>
+
+<p>
+  <strong>Temp incorrect answer:</strong>
+  <%= @program_educational_objective.temp_incorrect_answer %>
+</p>
+
+<%= link_to 'Edit', edit_program_educational_objective_path(@program_educational_objective) %> |
+<%= link_to 'Back', program_educational_objectives_path %>

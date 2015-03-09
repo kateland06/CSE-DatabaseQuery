@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_id: 
+  student_id: 
+  course: MyString
+  year_taken: 1
+  faculty: MyString
+  semester: MyString
+
+two:
+  section_id: 
+  student_id: 
+  course: MyString
+  year_taken: 1
+  faculty: MyString
+  semester: MyString

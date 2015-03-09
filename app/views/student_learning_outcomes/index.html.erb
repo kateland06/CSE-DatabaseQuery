@@ -1,0 +1,41 @@
+<h1>Listing student_learning_outcomes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Accredidation body</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Year added</th>
+      <th>Active</th>
+      <th>Correct answers</th>
+      <th>Incorrect answers</th>
+      <th>Temp correct answer</th>
+      <th>Temp incorrect answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @student_learning_outcomes.each do |student_learning_outcome| %>
+      <tr>
+        <td><%= student_learning_outcome.accredidation_body %></td>
+        <td><%= student_learning_outcome.title %></td>
+        <td><%= student_learning_outcome.description %></td>
+        <td><%= student_learning_outcome.year_added %></td>
+        <td><%= student_learning_outcome.active %></td>
+        <td><%= student_learning_outcome.correct_answers %></td>
+        <td><%= student_learning_outcome.incorrect_answers %></td>
+        <td><%= student_learning_outcome.temp_correct_answer %></td>
+        <td><%= student_learning_outcome.temp_incorrect_answer %></td>
+        <td><%= link_to 'Show', student_learning_outcome %></td>
+        <td><%= link_to 'Edit', edit_student_learning_outcome_path(student_learning_outcome) %></td>
+        <td><%= link_to 'Destroy', student_learning_outcome, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student learning outcome', new_student_learning_outcome_path %>

@@ -1,0 +1,27 @@
+<h1>Listing slo_covered_by_kts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student learning outcome</th>
+      <th>Knowledge topic</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slo_covered_by_kts.each do |slo_covered_by_kt| %>
+      <tr>
+        <td><%= slo_covered_by_kt.student_learning_outcome %></td>
+        <td><%= slo_covered_by_kt.knowledge_topic %></td>
+        <td><%= link_to 'Show', slo_covered_by_kt %></td>
+        <td><%= link_to 'Edit', edit_slo_covered_by_kt_path(slo_covered_by_kt) %></td>
+        <td><%= link_to 'Destroy', slo_covered_by_kt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slo covered by kt', new_slo_covered_by_kt_path %>

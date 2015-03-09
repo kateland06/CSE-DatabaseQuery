@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Knowledge area:</strong>
+  <%= @knowledge_topic.knowledge_area %>
+</p>
+
+<p>
+  <strong>Knowledge unit:</strong>
+  <%= @knowledge_topic.knowledge_unit %>
+</p>
+
+<p>
+  <strong>Knowledge topic:</strong>
+  <%= @knowledge_topic.knowledge_topic %>
+</p>
+
+<p>
+  <strong>Year added:</strong>
+  <%= @knowledge_topic.year_added %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @knowledge_topic.active %>
+</p>
+
+<p>
+  <strong>Correct answers:</strong>
+  <%= @knowledge_topic.correct_answers %>
+</p>
+
+<p>
+  <strong>Incorrect answers:</strong>
+  <%= @knowledge_topic.incorrect_answers %>
+</p>
+
+<p>
+  <strong>Temp correct answer:</strong>
+  <%= @knowledge_topic.temp_correct_answer %>
+</p>
+
+<p>
+  <strong>Temp incorrect answer:</strong>
+  <%= @knowledge_topic.temp_incorrect_answer %>
+</p>
+
+<%= link_to 'Edit', edit_knowledge_topic_path(@knowledge_topic) %> |
+<%= link_to 'Back', knowledge_topics_path %>

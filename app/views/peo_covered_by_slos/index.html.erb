@@ -1,0 +1,27 @@
+<h1>Listing peo_covered_by_slos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student learning outcome</th>
+      <th>Program educational objective</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @peo_covered_by_slos.each do |peo_covered_by_slo| %>
+      <tr>
+        <td><%= peo_covered_by_slo.student_learning_outcome %></td>
+        <td><%= peo_covered_by_slo.program_educational_objective %></td>
+        <td><%= link_to 'Show', peo_covered_by_slo %></td>
+        <td><%= link_to 'Edit', edit_peo_covered_by_slo_path(peo_covered_by_slo) %></td>
+        <td><%= link_to 'Destroy', peo_covered_by_slo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Peo covered by slo', new_peo_covered_by_slo_path %>

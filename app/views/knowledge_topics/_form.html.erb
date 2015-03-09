@@ -1,0 +1,53 @@
+<%= form_for(@knowledge_topic) do |f| %>
+  <% if @knowledge_topic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@knowledge_topic.errors.count, "error") %> prohibited this knowledge_topic from being saved:</h2>
+
+      <ul>
+      <% @knowledge_topic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :knowledge_area %><br>
+    <%= f.text_field :knowledge_area %>
+  </div>
+  <div class="field">
+    <%= f.label :knowledge_unit %><br>
+    <%= f.text_field :knowledge_unit %>
+  </div>
+  <div class="field">
+    <%= f.label :knowledge_topic %><br>
+    <%= f.text_field :knowledge_topic %>
+  </div>
+  <div class="field">
+    <%= f.label :year_added %><br>
+    <%= f.number_field :year_added %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :correct_answers %><br>
+    <%= f.number_field :correct_answers %>
+  </div>
+  <div class="field">
+    <%= f.label :incorrect_answers %><br>
+    <%= f.number_field :incorrect_answers %>
+  </div>
+  <div class="field">
+    <%= f.label :temp_correct_answer %><br>
+    <%= f.number_field :temp_correct_answer %>
+  </div>
+  <div class="field">
+    <%= f.label :temp_incorrect_answer %><br>
+    <%= f.number_field :temp_incorrect_answer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

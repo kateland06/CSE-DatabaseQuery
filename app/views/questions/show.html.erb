@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question text:</strong>
+  <%= @question.question_text %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @question.answer %>
+</p>
+
+<p>
+  <strong>Date created:</strong>
+  <%= @question.date_created %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @question.creator %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @question.active %>
+</p>
+
+<p>
+  <strong>Correct answers:</strong>
+  <%= @question.correct_answers %>
+</p>
+
+<p>
+  <strong>Incorrect answers:</strong>
+  <%= @question.incorrect_answers %>
+</p>
+
+<p>
+  <strong>Temp correct answer:</strong>
+  <%= @question.temp_correct_answer %>
+</p>
+
+<p>
+  <strong>Temp incorrect answer:</strong>
+  <%= @question.temp_incorrect_answer %>
+</p>
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>

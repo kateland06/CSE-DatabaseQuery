@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Accredidation body:</strong>
+  <%= @student_learning_outcome.accredidation_body %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @student_learning_outcome.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @student_learning_outcome.description %>
+</p>
+
+<p>
+  <strong>Year added:</strong>
+  <%= @student_learning_outcome.year_added %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @student_learning_outcome.active %>
+</p>
+
+<p>
+  <strong>Correct answers:</strong>
+  <%= @student_learning_outcome.correct_answers %>
+</p>
+
+<p>
+  <strong>Incorrect answers:</strong>
+  <%= @student_learning_outcome.incorrect_answers %>
+</p>
+
+<p>
+  <strong>Temp correct answer:</strong>
+  <%= @student_learning_outcome.temp_correct_answer %>
+</p>
+
+<p>
+  <strong>Temp incorrect answer:</strong>
+  <%= @student_learning_outcome.temp_incorrect_answer %>
+</p>
+
+<%= link_to 'Edit', edit_student_learning_outcome_path(@student_learning_outcome) %> |
+<%= link_to 'Back', student_learning_outcomes_path %>

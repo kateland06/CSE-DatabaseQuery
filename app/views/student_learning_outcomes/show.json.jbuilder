@@ -1,0 +1,1 @@
+json.extract! @student_learning_outcome, :id, :accredidation_body, :title, :description, :year_added, :active, :correct_answers, :incorrect_answers, :temp_correct_answer, :temp_incorrect_answer, :created_at, :updated_at

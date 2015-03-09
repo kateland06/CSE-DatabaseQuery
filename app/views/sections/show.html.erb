@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course registration number:</strong>
+  <%= @section.course_registration_number %>
+</p>
+
+<p>
+  <strong>Faculty:</strong>
+  <%= @section.faculty %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @section.course %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @section.semester %>
+</p>
+
+<p>
+  <strong>Year offered:</strong>
+  <%= @section.year_offered %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @section.section %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @section.student %>
+</p>
+
+<p>
+  <strong>Academic progress:</strong>
+  <%= @section.academic_progress %>
+</p>
+
+<p>
+  <strong>Grade:</strong>
+  <%= @section.grade %>
+</p>
+
+<p>
+  <strong>Quiz score:</strong>
+  <%= @section.quiz_score %>
+</p>
+
+<%= link_to 'Edit', edit_section_path(@section) %> |
+<%= link_to 'Back', sections_path %>

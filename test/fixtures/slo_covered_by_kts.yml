@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student_learning_outcome_id: 
+  knowledge_topic_id: 
+
+two:
+  student_learning_outcome_id: 
+  knowledge_topic_id: 

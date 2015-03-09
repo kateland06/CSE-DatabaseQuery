@@ -1,0 +1,53 @@
+<%= form_for(@question) do |f| %>
+  <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+
+      <ul>
+      <% @question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :question_text %><br>
+    <%= f.text_field :question_text %>
+  </div>
+  <div class="field">
+    <%= f.label :answer %><br>
+    <%= f.text_field :answer %>
+  </div>
+  <div class="field">
+    <%= f.label :date_created %><br>
+    <%= f.date_select :date_created %>
+  </div>
+  <div class="field">
+    <%= f.label :creator %><br>
+    <%= f.text_field :creator %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :correct_answers %><br>
+    <%= f.number_field :correct_answers %>
+  </div>
+  <div class="field">
+    <%= f.label :incorrect_answers %><br>
+    <%= f.number_field :incorrect_answers %>
+  </div>
+  <div class="field">
+    <%= f.label :temp_correct_answer %><br>
+    <%= f.number_field :temp_correct_answer %>
+  </div>
+  <div class="field">
+    <%= f.label :temp_incorrect_answer %><br>
+    <%= f.number_field :temp_incorrect_answer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

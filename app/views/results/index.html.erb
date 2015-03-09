@@ -1,0 +1,24 @@
+<h1>Search Database Test</h1>
+
+
+<h2>Search: </h2>
+<%= form_tag "/results/search" do %>
+  
+  <%= label_tag(:qry, "Query with first name:") %>
+  <br>
+  <%= text_field_tag(:qry) %>
+
+  <br><br>
+
+  <%= submit_tag "Query" %>
+<% end %>
+
+  <br><br>  <br><br>
+
+<%= form_tag "/results/abetReport" do %>
+
+
+  <%= submit_tag "ABET Report" %>
+  
+<% end %>
+

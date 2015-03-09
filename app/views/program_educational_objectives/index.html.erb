@@ -1,0 +1,41 @@
+<h1>Listing program_educational_objectives</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Accredidation body</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Year added</th>
+      <th>Active</th>
+      <th>Correct answers</th>
+      <th>Incorrect answers</th>
+      <th>Temp correct answer</th>
+      <th>Temp incorrect answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @program_educational_objectives.each do |program_educational_objective| %>
+      <tr>
+        <td><%= program_educational_objective.accredidation_body %></td>
+        <td><%= program_educational_objective.title %></td>
+        <td><%= program_educational_objective.description %></td>
+        <td><%= program_educational_objective.year_added %></td>
+        <td><%= program_educational_objective.active %></td>
+        <td><%= program_educational_objective.correct_answers %></td>
+        <td><%= program_educational_objective.incorrect_answers %></td>
+        <td><%= program_educational_objective.temp_correct_answer %></td>
+        <td><%= program_educational_objective.temp_incorrect_answer %></td>
+        <td><%= link_to 'Show', program_educational_objective %></td>
+        <td><%= link_to 'Edit', edit_program_educational_objective_path(program_educational_objective) %></td>
+        <td><%= link_to 'Destroy', program_educational_objective, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program educational objective', new_program_educational_objective_path %>

@@ -1,0 +1,21 @@
+<table style="width:75%">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Correct</th>
+      <th>Incorrect</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% results.each do |row| %>
+      <tr>
+        <td><%= row[0] %></td>
+        <td><%= row[1] %></td>
+        <td><%= row[2] %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

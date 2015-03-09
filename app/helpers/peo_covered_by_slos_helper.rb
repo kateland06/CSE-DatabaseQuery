@@ -1,0 +1,2 @@
+module PeoCoveredBySlosHelper
+end

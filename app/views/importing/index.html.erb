@@ -1,0 +1,75 @@
+
+
+<h1>Upload Quiz Results</h1>
+
+
+<h2>Upload a class section quiz results:</h2>
+<%= form_tag "/importing/loadQuiz/", multipart: true do %>
+  <%= file_field_tag :file %>
+
+<br><br>
+  <%= label_tag(:crn, "CRN:") %>
+  <%= text_field_tag(:crn) %>
+
+<br><br>
+  <%= label_tag(:course, "Program (CS or CEG):") %>
+  <%= text_field_tag(:course) %>
+<br>
+  <%= label_tag(:courseNumber, "Course Number:") %>
+  <%= text_field_tag(:courseNumber) %>
+
+<br><br>
+  <%= label_tag(:instrLastName, "Facultie Last Name:") %>
+  <%= text_field_tag(:instrLastName) %>
+<br>
+  <%= label_tag(:instrFirstName, "Facultie First Name:") %>
+  <%= text_field_tag(:instrFirstName) %>
+
+<br><br>
+  <%= label_tag(:semester, "Semester (Spring, Summer, Fall):") %>
+  <%= text_field_tag(:semester) %>
+
+<br><br>
+  <%= label_tag(:year, "Year:") %>
+  <%= text_field_tag(:year) %>
+
+<br><br>
+  <%= label_tag(:section, "Section:") %>
+  <%= text_field_tag(:section) %>
+
+
+
+<br><br>
+
+  <%= submit_tag "Import" %>
+<% end %>
+
+
+
+<h2>Upload SLOs:</h2>
+<%= form_tag "/importing/loadSlo", multipart: :true do %>
+  <%= file_field_tag :file %>
+
+<br><br>
+
+  <%= submit_tag "Load SLO" %>
+<% end %>
+
+<h2>Upload SLO covered by KTs:</h2>
+<%= form_tag "/importing/loadSloCoveredByKt", multipart: :true do %>
+  <%= file_field_tag :file %>
+
+<br><br>
+
+  <%= submit_tag "Load SLOcoveredByKTs" %>
+<% end %>
+
+
+<h2>Upload IR Report:</h2>
+<%= form_tag "/importing/loadIRreport", multipart: :true do %>
+  <%= file_field_tag :file %>
+
+<br><br>
+
+  <%= submit_tag "Load IR report" %>
+<% end %>

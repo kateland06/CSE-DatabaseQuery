@@ -1,0 +1,53 @@
+<%= form_for(@program_educational_objective) do |f| %>
+  <% if @program_educational_objective.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@program_educational_objective.errors.count, "error") %> prohibited this program_educational_objective from being saved:</h2>
+
+      <ul>
+      <% @program_educational_objective.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :accredidation_body %><br>
+    <%= f.text_field :accredidation_body %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :year_added %><br>
+    <%= f.number_field :year_added %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="field">
+    <%= f.label :correct_answers %><br>
+    <%= f.number_field :correct_answers %>
+  </div>
+  <div class="field">
+    <%= f.label :incorrect_answers %><br>
+    <%= f.number_field :incorrect_answers %>
+  </div>
+  <div class="field">
+    <%= f.label :temp_correct_answer %><br>
+    <%= f.number_field :temp_correct_answer %>
+  </div>
+  <div class="field">
+    <%= f.label :temp_incorrect_answer %><br>
+    <%= f.number_field :temp_incorrect_answer %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

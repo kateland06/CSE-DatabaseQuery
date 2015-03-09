@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  w_number: MyString
+  last_name: MyString
+  first_name: MyString
+  gender: MyString
+  ethnicity: MyString
+  high_school_gpa: 1.5
+  act: 1
+  mpl: 1
+  act_math: 1
+
+two:
+  w_number: MyString
+  last_name: MyString
+  first_name: MyString
+  gender: MyString
+  ethnicity: MyString
+  high_school_gpa: 1.5
+  act: 1
+  mpl: 1
+  act_math: 1

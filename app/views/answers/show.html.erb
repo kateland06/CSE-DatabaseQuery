@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @answer.question %>
+</p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @answer.section %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @answer.student %>
+</p>
+
+<p>
+  <strong>Knowledge topic:</strong>
+  <%= @answer.knowledge_topic %>
+</p>
+
+<p>
+  <strong>Is correct:</strong>
+  <%= @answer.is_correct %>
+</p>
+
+<p>
+  <strong>Answer text:</strong>
+  <%= @answer.answer_text %>
+</p>
+
+<%= link_to 'Edit', edit_answer_path(@answer) %> |
+<%= link_to 'Back', answers_path %>

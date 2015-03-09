@@ -1,0 +1,625 @@
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<h1>New Self Assessment Report 2014</h1>
+
+The richer data set of the new assessment infrastructure is maintained in a database allowing for specific drill down comparisons to compare different course preparation pathways, pedagogical styles, or any other variable of potential impact.  For example, we can specifically address the question, is there a different in SLO achievement for students that take the two-semester intro-ductory computer science sequence for fully prepared incoming freshman (CS1180, CS1181) versus students that take the three course sequence for less prepared incoming students (CS1160, CS1161, CS1181).  
+<br /><br /><br /><br />
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#container').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Student Learning Outcomes 2014'
+        },
+
+        xAxis: {
+            categories: ['a', 'b', 'c', 'h','i', 'j', 'k']
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: 'Number of answers'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+
+        plotOptions: {
+            column: {
+                stacking: 'normal'
+            }
+        },
+
+        series: [{
+            name: 'Spring 2014 correct',
+            data: <%= @slos_combined_semesters.map{|a| a[1]} %>,
+            stack: 'spring2014'
+        }, {
+            name: 'Spring 2014 incorrect',
+            data: <%= @slos_combined_semesters.map{|a| a[2]} %>,
+            stack: 'spring2014'
+        }, {
+            name: 'Summer 2014 correct',
+            data: <%= @slos_combined_semesters.map{|a| a[3]} %>,
+            stack: 'summer2014'
+        }, {
+            name: 'Summer 2014 incorrect',
+            data: <%= @slos_combined_semesters.map{|a| a[4]} %>,
+            stack: 'summer2014'
+        }, {
+            name: 'Fall 2014 correct',
+            data: <%= @slos_combined_semesters.map{|a| a[5]} %>,
+            stack: 'fall2014'
+        }, {
+            name: 'Fall 2014 incorrect',
+            data: <%= @slos_combined_semesters.map{|a| a[6]} %>,
+            stack: 'fall2014'
+        }]
+    });
+});
+</script>
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+CAPTION: A comparison of how many assessment questions were answered correctly versus incorrectly during the Fall, Spring, and Summer terms of the 2014 school year. Each bar represents a student learning outcome for a given semester (number questions answered correctly to number answered incorrectly).
+<br><br>
+
+<br><br>
+This chart shows the results of the assessment questions mapped to SLOs including the number of questions answered. The next chart shows similar data but presents it as percentage answered correctly based over term.  By continuing to collect this data, we are able to watch for correlations such as impact of class size on student performance.  Both charts are an example of the data that was collected for the self-study under the new system.
+<br><br>
+In addition to being able to look at the Student Learning Outcomes as a collective, this new as-sessment system makes it easier to break down the manner in which the data can be explored. It can be broken down based on courses, demographics, course preparedness, final grades, and stu-dent learning outcomes.  Once broken down it can provide data providing feedback on the suc-cess or failure of changes to curriculum such as pathway options and teaching styles. The charts below are provided to show just some of the things that the new data collection system can ex-amine. Note that some of the visualizations are labeled “demonstration only” as data may take several semesters of assessment before delivering statistically significant results. 
+<br><br>
+<br><br>
+<br><br>
+
+<h2>SLO combine table</h2>
+<%= render partial: "result_summation_table", locals: {results: @slos_combined}%>
+<br><br>
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#lineChart').highcharts({
+        title: {
+            text: 'SLO Assessment 2014',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Spring', 'summer', 'fall']
+        },
+        yAxis: {
+            title: {
+                text: 'Questions answered correctly (%)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'a',
+            data: <%= @slos_percentages[0][1..-1] %>
+        }, {
+            name: 'b',
+            data: <%= @slos_percentages[1][1..-1] %>
+        }, {
+            name: 'c',
+            data: <%= @slos_percentages[2][1..-1] %>
+        }, {
+            name: 'h',
+            data: <%= @slos_percentages[3][1..-1] %>
+        }, {
+            name: 'i',
+            data: <%= @slos_percentages[4][1..-1] %>
+        }, {
+            name: 'j',
+            data: <%= @slos_percentages[5][1..-1] %>
+        }, {
+            name: 'k',
+            data: <%= @slos_percentages[6][1..-1] %>
+        }]
+    });
+});
+</script>
+
+
+<div id="lineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+A different view of the comparison made in the above chart on how many assessment questions were answered correctly versus incorrectly during the Fall, Spring, and Summer terms of the 2014 school year. Here percentage answered correctly is used. 
+<br><br><br><br>
+
+
+<h2>SLOs by Semesters 2014</h2>
+<%= render partial: "results_by_semester", locals: {results: @slos_combined_semesters}%>
+<br><br><br><br>
+
+
+
+<h2>Different Pathways</h2>
+<p>Within our program, there are several different paths that a student could take (See Figure 4).  It is assumed that the same knowledge is obtained from all the courses, but with the new assessment system, it can be easily monitored by performance on pre-assessment exams.  In the next data sets the student results are broken down by pathways: those who took CS 1160/1, and those who did not (they either started in CS 1180 or transferred). </p>
+
+<br><br><br><br>
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#gradesChart').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Grades Based on 1160 Pathway'
+        },
+
+        xAxis: {
+            categories: ['CEG 3310', 'CS 1180', 'CS 1181', 'CS 3100']
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Students'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+
+
+        plotOptions: {
+            column: {
+                stacking: 'normal'
+            }
+        },
+
+
+        series: [{
+            name: '1160 Students A',
+            data: <%= @grades_for_graph.map{|a| a[1]} %>,
+            stack: 'students1160'
+        }, {
+            name: '1160 Students B',
+            data: <%= @grades_for_graph.map{|a| a[2]} %>,
+            stack: 'students1160'
+        },{
+            name: '1160 Students C',
+            data: <%= @grades_for_graph.map{|a| a[3]} %>,
+            stack: 'students1160'
+        },{
+            name: '1160 Students D',
+            data: <%= @grades_for_graph.map{|a| a[4]} %>,
+            stack: 'students1160'
+        },{
+            name: '1160 Students F',
+            data: <%= @grades_for_graph.map{|a| a[5]} %>,
+            stack: 'students1160'
+        },{
+            name: 'Other Students A',
+            data: <%= @grades_for_graph.map{|a| a[6]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students B',
+            data: <%= @grades_for_graph.map{|a| a[7]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students C',
+            data: <%= @grades_for_graph.map{|a| a[8]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students D',
+            data: <%= @grades_for_graph.map{|a| a[9]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students F',
+            data: <%= @grades_for_graph.map{|a| a[10]} %>,
+            stack: 'students1180'
+        }]
+    });
+});
+</script>
+
+
+<div id="gradesChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<h2>Students in 1160</h2>
+<table style="width:50%">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades_combined_1160.each do |row| %>
+      <tr>
+        <td><%= row[0]%></td>
+        <td><%= row[1]%></td>
+        <td><%= row[2]%></td>
+        <td><%= row[3]%></td>
+        <td><%= row[4]%></td>
+        <td><%= row[5]%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Students who started in CS 1180 or transfered</h2>
+<table style="width:50%">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades_combined_1180.each do |row| %>
+      <tr>
+        <td><%= row[0]%></td>
+        <td><%= row[1]%></td>
+        <td><%= row[2]%></td>
+        <td><%= row[3]%></td>
+        <td><%= row[4]%></td>
+        <td><%= row[5]%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br /><br /><br /><br />
+<p>The next chart looks simply at how many students took the course.  This allows us to observe if there is a significant drop off of students from one of the pathways at some point through the core sequence.</p>
+<br /><br /><br /><br />
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#retentionChart').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Number Students who took course'
+        },
+
+        xAxis: {
+            categories: ['CEG 3310', 'CS 1180', 'CS 1181', 'CS 3100']
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Students'
+            }
+        },
+
+        
+        series: [{
+            name: '1160 Students',
+            data: <%= @retention_for_graphing.map{|a| a[1]} %>,
+            
+        }, {
+            name: 'Other Students ',
+            data: <%= @retention_for_graphing.map{|a| a[2]} %>,
+            
+        }]
+    });
+});
+</script>
+
+
+<div id="retentionChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+
+<br /><br /><br /><br />
+<p>The next data set is similar to the previous but it looks compares students who took CS 1200 and(or) CS 2200 versus those students who took MTH 2570.  Both these pathways look at Discrete structures but the CS 1200/2200 sequence was designed for under prepared students. </p>
+
+<br /><br /><br /><br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#gradesDiscreteChart').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Grades Based on Discrete Pathway'
+        },
+
+        xAxis: {
+            categories: ['CEG 3310', 'CS 1180', 'CS 1181', 'CS 3100']
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Students'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+
+
+        plotOptions: {
+            column: {
+                stacking: 'normal'
+            }
+        },
+
+
+        series: [{
+            name: 'MTH 2570 Students A',
+            data: <%= @grades_for_graph_discrete.map{|a| a[1]} %>,
+            stack: 'students2570'
+        }, {
+            name: 'MTH 2570 Students B',
+            data: <%= @grades_for_graph_discrete.map{|a| a[2]} %>,
+            stack: 'students2570'
+        },{
+            name: 'MTH 2570 Students C',
+            data: <%= @grades_for_graph_discrete.map{|a| a[3]} %>,
+            stack: 'students2570'
+        },{
+            name: 'MTH 2570 Students D',
+            data: <%= @grades_for_graph_discrete.map{|a| a[4]} %>,
+            stack: 'students2570'
+        },{
+            name: 'MTH 2570 Students F',
+            data: <%= @grades_for_graph_discrete.map{|a| a[5]} %>,
+            stack: 'students2570'
+        },{
+            name: 'CS 1200 and(or) CS 2200 Students A',
+            data: <%= @grades_for_graph_discrete.map{|a| a[6]} %>,
+            stack: 'students2200'
+        },{
+            name: 'CS 1200 and(or) CS 2200 Students B',
+            data: <%= @grades_for_graph_discrete.map{|a| a[7]} %>,
+            stack: 'students2200'
+        },{
+            name: 'CS 1200 and(or) CS 2200 Students C',
+            data: <%= @grades_for_graph_discrete.map{|a| a[8]} %>,
+            stack: 'students2200'
+        },{
+            name: 'CS 1200 and(or) CS 2200 Students D',
+            data: <%= @grades_for_graph_discrete.map{|a| a[9]} %>,
+            stack: 'students2200'
+        },{
+            name: 'CS 1200 and(or) CS 2200 Students F',
+            data: <%= @grades_for_graph_discrete.map{|a| a[10]} %>,
+            stack: 'students2200'
+        }]
+    });
+});
+</script>
+
+
+<div id="gradesDiscreteChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<h2>Students in MTH 2570</h2>
+<table style="width:50%">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades_combined_2570.each do |row| %>
+      <tr>
+        <td><%= row[0]%></td>
+        <td><%= row[1]%></td>
+        <td><%= row[2]%></td>
+        <td><%= row[3]%></td>
+        <td><%= row[4]%></td>
+        <td><%= row[5]%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Students in CS 1200 and(or) CS 2200</h2>
+<table style="width:50%">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades_combined_2200.each do |row| %>
+      <tr>
+        <td><%= row[0]%></td>
+        <td><%= row[1]%></td>
+        <td><%= row[2]%></td>
+        <td><%= row[3]%></td>
+        <td><%= row[4]%></td>
+        <td><%= row[5]%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<br /><br /><br /><br />
+<p>The next chart looks simply at how many students took the course.  This allows us to observe if there is a significant drop off of students from one of the pathways at some point through the core sequence.</p>
+<br /><br /><br /><br />
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#retentionDiscreteChart').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Number Students who took course'
+        },
+
+        xAxis: {
+            categories: ['CEG 3310', 'CS 1180', 'CS 1181', 'CS 3100']
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Students'
+            }
+        },
+
+        
+        series: [{
+            name: 'Mth 2570 Students',
+            data: <%= @retention_for_graphing_discrete.map{|a| a[1]} %>,
+            
+        }, {
+            name: 'CS 1200 and(or) CS 2200 Students ',
+            data: <%= @retention_for_graphing_discrete.map{|a| a[2]} %>,
+            
+        }]
+    });
+});
+</script>
+
+
+<div id="retentionDiscreteChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+<br /><br /><br /><br />
+
+What follows is a breakdown of student answers by both knowledge topic and then question.  While this is a little more cumbersome, it allows for specific problems to be identified.
+
+
+<br /><br /><br /><br />
+
+<h2>Knowledge Topic Totals</h2>
+<%= render partial: "result_summation_table", locals: {results: @kts_combined}%>
+<br>
+
+
+<h2>Question Totals</h2>
+<%= render partial: "result_summation_table", locals: {results: @questions_combined}%>
+<br><br><br><br>
+
+<h2>Flexibility with the New Assessment System</h2>
+
+<p>It is important to note that anything that is based on pre-assessment grade can easily be linked to student learning outcomes and program educational objectives since all the questions are mapped to what they test.  Similarly, anything that shows student learning outcomes or program educational objectives can be broken down into specific knowledge topics, questions, and students who answered those questions.  Since all the results are linked back to a specific student, all the questions can be broken down by demographics, year began, pathways, or even previous performance in a course or on a pre-assessment quiz.  This makes the items displayed in this paper easy to mix and match.  Also note that while charts were largely used in this paper for ease of viewing, all the values in the charts have hard numbers backing them up. Statistical tests can be run on areas of interest to determine if a change really occurred before any action is taken.  Additionally, the results can be presented as exact sample size or as percentages.</p>
+<br /><br />  
+<h2>Conclusion</h2>
+ 
+<p>This assessment infrastructure allows for an assessment of retained knowledge, topic by topic, for each individual student, course, and term.  When collected with appropriate demographic information, these assessments allow the differential measurements of knowledge retention under any number of pedagogical variables.  The success of new instructional styles, laboratory techniques, or technologies for developing knowledge can be assessed against different approaches.</p>
+
+<p>Every contemporary engineering discipline has a professional society that helps identify the core concepts of the discipline.  Indeed, most engineering disciplines have standardized examinations of some sort that are used to demonstrate student proficiency for licensure or graduate studies.  Questions of this sort can be used at the start of core courses or time points to assess student knowledge of prerequisite topics developed earlier in any program of study.  These assessments can be delivered as online questions to minimize cost and maximize participation. When collected with appropriate demographic information, this rich set of data can guide program improvement more effectively than many existing program assessment plans.  Although we present this infrastructure in the context of Computer Science, we believe that the approach can be applied to implement an infrastructure for effective assessment program for any engineering discipline.</p>
+
+<br /><br />
+<h2>Biblography</h2>
+
+
+[1] ACM/IEEE-CS Joint Task Force. Computer Science Curricula 2013 (CS2013). http://ai.stan¬ford.edu¬/users-/sahami¬/CS¬2013/. Strawman draft, Feb 2012.
+
+<br /><br />
+[2] ABET.  Computing Accreditation Commission (CAC) Criteria. http://www.abet.org/accreditation-criteria-policies-documents/
+
+<br /><br />
+[3] ABET.  Engineering Accreditation Commission (EAC) Criteria. http://www.abet.org/accreditation-criteria-policies-documents/
+

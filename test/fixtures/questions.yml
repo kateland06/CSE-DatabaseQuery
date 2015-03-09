@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question_text: MyString
+  answer: MyString
+  date_created: 2014-12-02
+  creator: MyString
+  active: false
+  correct_answers: 1
+  incorrect_answers: 1
+  temp_correct_answer: 1
+  temp_incorrect_answer: 1
+
+two:
+  question_text: MyString
+  answer: MyString
+  date_created: 2014-12-02
+  creator: MyString
+  active: false
+  correct_answers: 1
+  incorrect_answers: 1
+  temp_correct_answer: 1
+  temp_incorrect_answer: 1

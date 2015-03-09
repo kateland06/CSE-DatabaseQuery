@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student learning outcome:</strong>
+  <%= @slo_covered_by_kt.student_learning_outcome %>
+</p>
+
+<p>
+  <strong>Knowledge topic:</strong>
+  <%= @slo_covered_by_kt.knowledge_topic %>
+</p>
+
+<%= link_to 'Edit', edit_slo_covered_by_kt_path(@slo_covered_by_kt) %> |
+<%= link_to 'Back', slo_covered_by_kts_path %>

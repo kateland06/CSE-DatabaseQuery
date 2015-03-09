@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Section:</strong>
+  <%= @prerequisite.section %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @prerequisite.student %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @prerequisite.course %>
+</p>
+
+<p>
+  <strong>Year taken:</strong>
+  <%= @prerequisite.year_taken %>
+</p>
+
+<p>
+  <strong>Faculty:</strong>
+  <%= @prerequisite.faculty %>
+</p>
+
+<p>
+  <strong>Semester:</strong>
+  <%= @prerequisite.semester %>
+</p>
+
+<%= link_to 'Edit', edit_prerequisite_path(@prerequisite) %> |
+<%= link_to 'Back', prerequisites_path %>

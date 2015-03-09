@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Student learning outcome:</strong>
+  <%= @peo_covered_by_slo.student_learning_outcome %>
+</p>
+
+<p>
+  <strong>Program educational objective:</strong>
+  <%= @peo_covered_by_slo.program_educational_objective %>
+</p>
+
+<%= link_to 'Edit', edit_peo_covered_by_slo_path(@peo_covered_by_slo) %> |
+<%= link_to 'Back', peo_covered_by_slos_path %>

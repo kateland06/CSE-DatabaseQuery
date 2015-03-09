@@ -1,0 +1,16 @@
+<h1>Importing#index</h1>
+
+
+
+<h1>Upload Results Small Test (course and faculty)</h1>
+
+
+<h2>Upload a class section quiz results:</h2>
+<%= form_tag "/importing/load", multipart: :true do %>
+  <%= file_field_tag :file %>
+
+<br><br>
+
+  <%= submit_tag "Load" %>
+<% end %>
+

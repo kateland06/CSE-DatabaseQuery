@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>W number:</strong>
+  <%= @student.w_number %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @student.last_name %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @student.first_name %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @student.gender %>
+</p>
+
+<p>
+  <strong>Ethnicity:</strong>
+  <%= @student.ethnicity %>
+</p>
+
+<p>
+  <strong>High school gpa:</strong>
+  <%= @student.high_school_gpa %>
+</p>
+
+<p>
+  <strong>Act:</strong>
+  <%= @student.act %>
+</p>
+
+<p>
+  <strong>Mpl:</strong>
+  <%= @student.mpl %>
+</p>
+
+<p>
+  <strong>Act math:</strong>
+  <%= @student.act_math %>
+</p>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

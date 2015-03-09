@@ -1,0 +1,35 @@
+<h1>Listing answers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Section</th>
+      <th>Student</th>
+      <th>Knowledge topic</th>
+      <th>Is correct</th>
+      <th>Answer text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @answers.each do |answer| %>
+      <tr>
+        <td><%= answer.question %></td>
+        <td><%= answer.section %></td>
+        <td><%= answer.student %></td>
+        <td><%= answer.knowledge_topic %></td>
+        <td><%= answer.is_correct %></td>
+        <td><%= answer.answer_text %></td>
+        <td><%= link_to 'Show', answer %></td>
+        <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
+        <td><%= link_to 'Destroy', answer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Answer', new_answer_path %>
