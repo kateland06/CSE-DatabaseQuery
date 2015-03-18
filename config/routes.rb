@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'results/answers'
   get 'results/search', to: 'results#answers'
   post 'results/search', to: 'results#search'
+  get 'results/query', to: 'results#query'
 
   get 'results/abetReport'
   get 'results/abetReport', to: 'results#reportABET'
