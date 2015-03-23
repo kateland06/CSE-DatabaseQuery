@@ -108,6 +108,18 @@ class Result
       
   end
 
+   def self.make_percentages_per_semester(results)
+    newData = Array.new
+    results.each {|row|
+      title = row[0]
+      semester = row[1].to_f/(row[1] + row[2])
+      newData << [title, semester]
+    }
+    
+    return newData
+      
+  end
+  
   def self.getStudentIDArray(results)
     newData = Array.new
     results.each {|row|

@@ -1,0 +1,454 @@
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<h1>New Self Assessment Report 2014</h1>
+
+The richer data set of the new assessment infrastructure is maintained in a database allowing for specific drill down comparisons to compare different course preparation pathways, pedagogical styles, or any other variable of potential impact.  For example, we can specifically address the question, is there a different in SLO achievement for students that take the two-semester intro-ductory computer science sequence for fully prepared incoming freshman (CS1180, CS1181) versus students that take the three course sequence for less prepared incoming students (CS1160, CS1161, CS1181).  
+<br /><br /><br /><br />
+
+
+# ----------------------- SLO's Correct v/s Incorrect -----------------------
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#container').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Student Learning Outcomes'
+        },
+
+        xAxis: {
+            categories: ['Title 1', 'Title 2', 'Title 3', 'Title 4','Title 5', 'Title 6', 'Title 7']
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: 'Number of answers'
+            }
+        },
+
+      
+        plotOptions: {
+            column: {
+                stacking: 'normal'
+            }
+        },
+
+        series: [{
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[1]} %>,
+            stack: 'Title 1'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[2]} %>,
+            stack: 'Title 1'
+        }, {
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[3]} %>,
+            stack: 'Title 2'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[4]} %>,
+            stack: 'Title 2'
+        }, {
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[5]} %>,
+            stack: 'Title 3'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[6]} %>,
+            stack: 'Title 3'
+        }, {
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[7]} %>,
+            stack: 'Title 4'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[8]} %>,
+            stack: 'Title 4'
+        }, {
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[9]} %>,
+            stack: 'Title 5'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[10]} %>,
+            stack: 'Title 5'
+        }, {
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[11]} %>,
+            stack: 'Title 6'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[12]} %>,
+            stack: 'Title 6'
+        }, {
+            name: 'Correct',
+            data: <%= @slos_combined.map{|a| a[13]} %>,
+            stack: 'Title 7'
+        }, {
+            name: 'Incorrect',
+            data: <%= @slos_combined.map{|a| a[14]} %>,
+            stack: 'Title 7'
+        },]
+    });
+});
+</script>
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+CAPTION: A comparison of how many assessment questions were answered correctly versus incorrectly during the Fall, Spring, and Summer terms of the 2014 school year. Each bar represents a student learning outcome for a given semester (number questions answered correctly to number answered incorrectly).
+<br><br>
+
+<br><br>
+This chart shows the results of the assessment questions mapped to SLOs including the number of questions answered. The next chart shows similar data but presents it as percentage answered correctly based over term.  By continuing to collect this data, we are able to watch for correlations such as impact of class size on student performance.  Both charts are an example of the data that was collected for the self-study under the new system.
+<br><br>
+In addition to being able to look at the Student Learning Outcomes as a collective, this new as-sessment system makes it easier to break down the manner in which the data can be explored. It can be broken down based on courses, demographics, course preparedness, final grades, and stu-dent learning outcomes.  Once broken down it can provide data providing feedback on the suc-cess or failure of changes to curriculum such as pathway options and teaching styles. The charts below are provided to show just some of the things that the new data collection system can ex-amine. Note that some of the visualizations are labeled “demonstration only” as data may take several semesters of assessment before delivering statistically significant results. 
+<br><br>
+<br><br>
+<br><br>
+
+<h2>SLO combine table</h2>
+<%= render partial: "result_summation_table", locals: {results: @slos_combined}%>
+<br><br>
+
+
+# ----------------------- SLO's per semester -----------------------
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#container').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Student Learning Outcomes 2014'
+        },
+
+        xAxis: {
+            categories: ['Title 1', 'Title 2', 'Title 3', 'Title 4','Title 5', 'Title 6', 'Title 7']
+        },
+
+        yAxis: {
+            allowDecimals: false,
+            min: 0,
+            title: {
+                text: 'Number of answers'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+
+        plotOptions: {
+            column: {
+                stacking: 'normal'
+            }
+        },
+
+        series: [{
+            name: 'Spring 2014 correct',
+            data: <%= @slos_combined_semesters.map{|a| a[1]} %>,
+            stack: 'spring2014'
+        }, {
+            name: 'Spring 2014 incorrect',
+            data: <%= @slos_combined_semesters.map{|a| a[2]} %>,
+            stack: 'spring2014'
+        }, {
+            name: 'Summer 2014 correct',
+            data: <%= @slos_combined_semesters.map{|a| a[3]} %>,
+            stack: 'summer2014'
+        }, {
+            name: 'Summer 2014 incorrect',
+            data: <%= @slos_combined_semesters.map{|a| a[4]} %>,
+            stack: 'summer2014'
+        }, {
+            name: 'Fall 2014 correct',
+            data: <%= @slos_combined_semesters.map{|a| a[5]} %>,
+            stack: 'fall2014'
+        }, {
+            name: 'Fall 2014 incorrect',
+            data: <%= @slos_combined_semesters.map{|a| a[6]} %>,
+            stack: 'fall2014'
+        }]
+    });
+});
+</script>
+
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+CAPTION: A comparison of how many assessment questions were answered correctly versus incorrectly during the Fall, Spring, and Summer terms of the 2014 school year. Each bar represents a student learning outcome for a given semester (number questions answered correctly to number answered incorrectly).
+<br><br>
+
+<br><br>
+This chart shows the results of the assessment questions mapped to SLOs including the number of questions answered. The next chart shows similar data but presents it as percentage answered correctly based over term.  By continuing to collect this data, we are able to watch for correlations such as impact of class size on student performance.  Both charts are an example of the data that was collected for the self-study under the new system.
+<br><br>
+In addition to being able to look at the Student Learning Outcomes as a collective, this new as-sessment system makes it easier to break down the manner in which the data can be explored. It can be broken down based on courses, demographics, course preparedness, final grades, and stu-dent learning outcomes.  Once broken down it can provide data providing feedback on the suc-cess or failure of changes to curriculum such as pathway options and teaching styles. The charts below are provided to show just some of the things that the new data collection system can ex-amine. Note that some of the visualizations are labeled “demonstration only” as data may take several semesters of assessment before delivering statistically significant results. 
+<br><br>
+<br><br>
+<br><br>
+
+<h2>SLO combine table</h2>
+<%= render partial: "result_by_semester", locals: {results: @slos_combined_semesters}%>
+<br><br>
+
+
+# ----------------------- SLO by Percentage across semesters -----------------------
+
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#lineChart').highcharts({
+        title: {
+            text: 'SLO Assessment 2014',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com',
+            x: -20
+        },
+        xAxis: {
+            categories: ['Spring', 'summer', 'fall']
+        },
+        yAxis: {
+            title: {
+                text: 'Questions answered correctly (%)'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: '%'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'a',
+            data: <%= @slos_percentages[0][1..-1] %>
+        }, {
+            name: 'b',
+            data: <%= @slos_percentages[1][1..-1] %>
+        }, {
+            name: 'c',
+            data: <%= @slos_percentages[2][1..-1] %>
+        }, {
+            name: 'h',
+            data: <%= @slos_percentages[3][1..-1] %>
+        }, {
+            name: 'i',
+            data: <%= @slos_percentages[4][1..-1] %>
+        }, {
+            name: 'j',
+            data: <%= @slos_percentages[5][1..-1] %>
+        }, {
+            name: 'k',
+            data: <%= @slos_percentages[6][1..-1] %>
+        }]
+    });
+});
+</script>
+
+
+<div id="lineChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+A different view of the comparison made in the above chart on how many assessment questions were answered correctly versus incorrectly during the Fall, Spring, and Summer terms of the 2014 school year. Here percentage answered correctly is used. 
+<br><br><br><br>
+
+
+<h2>SLOs by Percentage</h2>
+<%= render partial: "results_by_percentage", locals: {results: @slos_percentages}%>
+<br><br><br><br>
+
+
+# ----------------------- 1160 Pathway -----------------------
+
+<h2>Different Pathways</h2>
+<p>Within our program, there are several different paths that a student could take (See Figure 4).  It is assumed that the same knowledge is obtained from all the courses, but with the new assessment system, it can be easily monitored by performance on pre-assessment exams.  In the next data sets the student results are broken down by pathways: those who took CS 1160/1, and those who did not (they either started in CS 1180 or transferred). </p>
+
+<br><br><br><br>
+
+<script type="text/javascript" charset="UTF-8">
+$(function () {
+    $('#gradesChart').highcharts({
+
+        chart: {
+            type: 'column'
+        },
+
+        title: {
+            text: 'Grades Based on 1160 Pathway'
+        },
+
+        xAxis: {
+            categories: ['CEG 3310', 'CS 1180', 'CS 1181', 'CS 3100']
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Number of Students'
+            }
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '<b>' + this.x + '</b><br/>' +
+                    this.series.name + ': ' + this.y + '<br/>' +
+                    'Total: ' + this.point.stackTotal;
+            }
+        },
+
+
+        plotOptions: {
+            column: {
+                stacking: 'normal'
+            }
+        },
+
+
+        series: [{
+            name: '1160 Students A',
+            data: <%= @grades_for_graph.map{|a| a[1]} %>,
+            stack: 'students1160'
+        }, {
+            name: '1160 Students B',
+            data: <%= @grades_for_graph.map{|a| a[2]} %>,
+            stack: 'students1160'
+        },{
+            name: '1160 Students C',
+            data: <%= @grades_for_graph.map{|a| a[3]} %>,
+            stack: 'students1160'
+        },{
+            name: '1160 Students D',
+            data: <%= @grades_for_graph.map{|a| a[4]} %>,
+            stack: 'students1160'
+        },{
+            name: '1160 Students F',
+            data: <%= @grades_for_graph.map{|a| a[5]} %>,
+            stack: 'students1160'
+        },{
+            name: 'Other Students A',
+            data: <%= @grades_for_graph.map{|a| a[6]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students B',
+            data: <%= @grades_for_graph.map{|a| a[7]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students C',
+            data: <%= @grades_for_graph.map{|a| a[8]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students D',
+            data: <%= @grades_for_graph.map{|a| a[9]} %>,
+            stack: 'students1180'
+        },{
+            name: 'Other Students F',
+            data: <%= @grades_for_graph.map{|a| a[10]} %>,
+            stack: 'students1180'
+        }]
+    });
+});
+</script>
+
+
+<div id="gradesChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<h2>Students in 1160</h2>
+<table style="width:50%">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades_combined_1160.each do |row| %>
+      <tr>
+        <td><%= row[0]%></td>
+        <td><%= row[1]%></td>
+        <td><%= row[2]%></td>
+        <td><%= row[3]%></td>
+        <td><%= row[4]%></td>
+        <td><%= row[5]%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Students who started in CS 1180 or transfered</h2>
+<table style="width:50%">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      
+      <th colspan="6"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grades_combined_1180.each do |row| %>
+      <tr>
+        <td><%= row[0]%></td>
+        <td><%= row[1]%></td>
+        <td><%= row[2]%></td>
+        <td><%= row[3]%></td>
+        <td><%= row[4]%></td>
+        <td><%= row[5]%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br /><br /><br /><br />
+<br /><br /><br /><br />
+
+<h2>Knowledge Topic Totals</h2>
+<%= render partial: "result_summation_table", locals: {results: @kts_combined}%>
+<br>
+
+
+<h2>Question Totals</h2>
+<%= render partial: "result_summation_table", locals: {results: @questions_combined}%>
+<br><br><br><br>
