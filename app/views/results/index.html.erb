@@ -15,10 +15,33 @@
 
   <br><br>  <br><br>
 
-<%= form_tag "/results/abetReport" do %>
+<% form_tag "/results/abetReportYear" do %>
+ <p>
+   Year:<br />
+   <%= text_field_tag ('Year', nil, disabled: false) %>
+ </p>
 
+ <p>
+   <%= submit_tag 'Submit' %>
+ </p>
 
-  <%= submit_tag "ABET Report" %>
-  
 <% end %>
 
+  <br><br>  <br><br>
+
+<% form_tag "/results/abetReportYearSemester" do %>
+ <p>
+   Year:<br />
+   <%= text_field_tag ('Year', nil, disabled: false) %>
+ </p>
+ <p>
+   Semester: <br />
+   <%= select_tag('Semester', options_for_select([['Spring', 'Spring'], ['Summer', 'Summer'],['Fall','Fall']], '3'), disabled: false) %>
+ </p>
+ <p>
+   <%= submit_tag 'Submit' %>
+ </p>
+<% end %>
+
+
+<% end %>
