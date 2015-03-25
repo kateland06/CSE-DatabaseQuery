@@ -5,6 +5,22 @@ class ResultsController < ApplicationController
   def answers
   end
   
+  def query
+	@domain = params[:domain]
+	@dattribute = params[:dattribute]
+	@dfilter = params[:dfilter]
+	@range = params[:range]
+	@rattribute = params[:rattribute]
+	
+	if @dattribute == nil || @dfilter == nil
+		@dattribute = ""
+		@dfilter = ""
+	end
+	
+	@results = @domain.constantize.joins(@range.to_sym).where(@dattribute+@dfilter).select(@rattribute)
+	
+	render "/results/query"
+  end
   
   def search
     @answers = Answer.select( :answer_text, :is_correct, "count(answers.id) AS number_students_selected").group(:answer_text)

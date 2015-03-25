@@ -1,0 +1,20 @@
+<h1>Query Results</h1>
+<p><%= @domain %> WHERE <%= @dattribute %> <%= @dfilter %> JOIN <%= @range %> SELECT <%= @rattribute %>.</p>
+
+<table>
+  <thead>
+    <tr>
+		<td>ID</td>
+		<td><%= @rattribute %></td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+		<td><%= result %></td>
+        <td><%= eval("result.#{@rattribute}") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
