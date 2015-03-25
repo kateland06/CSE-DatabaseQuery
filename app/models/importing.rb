@@ -498,45 +498,65 @@ class Importing
 
   def self.importing_ir_report(file)
     
-    course_list = [[10, "CS", "1150"],[13, "CS", "1160"],[17, "CS", "1200"],[20, "CS", "1161"],[23, "MTH", "2200"],[24, "CS", "1180"],[29, "MTH", "2570"],[33, "CS", "1181"],[41, "CEG", "2350"],[45, "MTH", "2300"],[49, "CEG", "3310"],[53, "MTH", "2310"],[58, "MTH", "2240"],[60, "MTH", "2280"],[63, "CS", "2200"],[66, "CS", "3100"],[72, "CEG", "3320"]]    
+    course_list = [[8, "CS", "1150"],[10, "CS", "1160"],[13, "CS", "1200"],[16, "CS", "1161"],[19, "MTH", "2200"],[20, "CS", "1180"],[25, "MTH", "2570"],[28, "CS", "1181"],[33, "CEG", "2350"],[36, "MTH", "2300"],[39, "CEG", "3310"],[42, "MTH", "2310"],[46, "MTH", "2240"],[48, "MTH", "2280"],[50, "CS", "2200"],[53, "CS", "3100"],[58, "CEG", "3320"]]    
     
     
     sheet1 = open_spreadsheet(file)
-    index = 5 #Skip row of headers
+    index = 0 #Skip row of headers
     numberOfLines = sheet1.last_row
     
-    # loop for each student in the file
-    while (index < numberOfLines) do
-      row = sheet1.row(index)
-      stu = Student.find_or_create_by(w_number: row[2])
+    for index in 5..numberOfLines
+      	row = sheet1.row(index)
 
-      course_list.each {|c|
-          course_cell = c[0]
-          if row[course_cell]
-            grade = row[c[0]].to_str
-            cour = c[1] + " " + c[2]
-            grade = grade[grade.length - 1].to_str
-            if(grade.eql? "A" or grade.eql? "a"or grade.eql? "B"or grade.eql? "b"or grade.eql? "C"or grade.eql? "c"or grade.eql? "D"or grade.eql? "d"or grade.eql? "F"or grade.eql? "f")
-              sect = Section.find_or_create_by(student: stu, course: cour )
-              sect.grade = grade
-              sect.student = stu
-              sect.save
-            end
-          end
-        }      
+      	if(row[0] =~ /^u\d+/i )
+      		stu = Student.find_or_create_by(w_number: row[2])
 
-      stu.act = row[80]
-      stu.act_math = row[79]
-      stu.mpl = row[78]
-      stu.high_school_gpa = row[76]
-      stu.save
-      
-      index = index + 1      
-    end # end loop   while (currentRowIndex < numberOfLines) do
-    
-    
+      		course_list.each {|c|
+         		course_cell = c[0]
+         		if row[course_cell]
+          			grade = row[c[0]].to_str
+            		
+            		splitGrade = grade.to_str.split("/")
+            		
+            		# Grab the Semester and year taken
+            		if(splitGrade[0] =~ /^\w+\s+\d+$/i)
+            			classTaken = splitGrade[0].to_str.split(" ")
+            			semesterTaken = classTaken[0]
+            			yearTaken = classTaken[1] 
+            		end
+
+            		# Grab the Grade
+            		if(splitGrade[1] =~ /^\w+/)
+            			letterGrade = splitGrade[1]
+            		else
+            			letterGrade = "0"
+            		end
+
+            		cour = c[1] + " " + c[2]
+
+            		if(letterGrade =~ /a|b|c|d|f|x|w/i)
+            			sect = Section.find_or_create_by(student: stu, course: cour )
+            			sect.semester = semesterTaken
+            			sect.year_offered = yearTaken
+              			sect.grade = letterGrade
+              			sect.student = stu
+              			sect.save
+            		end
+            	end
+        	}
+
+        	# Save student information
+        	#stu.UID = row[0]
+      		stu.act = row[64]
+      		stu.act_math = row[63]
+      		stu.mpl = row[62]
+      		stu.high_school_gpa = row[61]
+      		stu.save    
+        end       
+    end
   end
-end
+
+end #end of view
     
     
 
