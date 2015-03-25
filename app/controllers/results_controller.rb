@@ -4,7 +4,7 @@ class ResultsController < ApplicationController
   
   def answers
   end
- 
+
   def query
 	@domain = params[:domain]
 	@dattribute = params[:dattribute]
@@ -20,7 +20,7 @@ class ResultsController < ApplicationController
 	@results = @domain.constantize.joins(@range.to_sym).where(@dattribute+@dfilter).select(@rattribute)
 	
 	render "/results/query"
-  end 
+  end
   
   def search
     @answers = Answer.select( :answer_text, :is_correct, "count(answers.id) AS number_students_selected").group(:answer_text)
