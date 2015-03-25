@@ -14,11 +14,17 @@
 <% end %>
 
   <br><br>  <br><br>
+ 
+  
+  <h1>ABET Reports</h1>
+      <br>  
+        <h2>Search based on Year: </h2>
 
-<% form_tag "/results/abetReportYear" do %>
+<%= form_tag "/results/abetReportYear" do %>
  <p>
-   Year:<br />
-   <%= text_field_tag ('Year', nil, disabled: false) %>
+    <label for="year">Year</label>
+  <%= text_field_tag :year %>
+ 
  </p>
 
  <p>
@@ -26,17 +32,19 @@
  </p>
 
 <% end %>
+  <br>
 
-  <br><br>  <br><br>
+  
+<h2>Search based on Year and Semester: </h2>
 
-<% form_tag "/results/abetReportYearSemester" do %>
- <p>
-   Year:<br />
-   <%= text_field_tag ('Year', nil, disabled: false) %>
- </p>
- <p>
-   Semester: <br />
-   <%= select_tag('Semester', options_for_select([['Spring', 'Spring'], ['Summer', 'Summer'],['Fall','Fall']], '3'), disabled: false) %>
+  <%= form_tag "/results/abetReportYearSemester" do %>
+   <p>
+     Year:<br />
+     <%= text_field_tag 'Year', nil, disabled: false %>
+   </p>
+   <p>
+   <br />
+   <%= select_tag "Semester", options_for_select([['Spring', 'Spring'], ['Summer', 'Summer'],['Fall','Fall']], disabled: false) %>
  </p>
  <p>
    <%= submit_tag 'Submit' %>
@@ -44,4 +52,4 @@
 <% end %>
 
 
-<% end %>
+

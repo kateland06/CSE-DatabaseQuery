@@ -4,7 +4,23 @@ class ResultsController < ApplicationController
   
   def answers
   end
-  
+ 
+  def query
+	@domain = params[:domain]
+	@dattribute = params[:dattribute]
+	@dfilter = params[:dfilter]
+	@range = params[:range]
+	@rattribute = params[:rattribute]
+	
+	if @dattribute == nil || @dfilter == nil
+		@dattribute = ""
+		@dfilter = ""
+	end
+	
+	@results = @domain.constantize.joins(@range.to_sym).where(@dattribute+@dfilter).select(@rattribute)
+	
+	render "/results/query"
+  end 
   
   def search
     @answers = Answer.select( :answer_text, :is_correct, "count(answers.id) AS number_students_selected").group(:answer_text)
@@ -17,7 +33,11 @@ class ResultsController < ApplicationController
   
   def abetReportYear
     
-   @slos = Answer.joins(knowledge_topic: :student_learning_outcomes).select("student_learning_outcomes.title","count(*) as total_answers","count(case when is_correct = 't' then 1 else null) as correct_answers","count(case when is_correct = 'f' then 1 else null) as incorrect_answers").where("sections.year_offered = (params[:Year])").group("student_learning_outcomes.id")
+   # year = params[:year]
+    
+   # @slos = Answer.joins(knowledge_topic: :student_learning_outcomes).select("student_learning_outcomes.title","count(*) as total_answers","count(case when is_correct = 't' then 1 else null) as correct_answers","count(case when is_correct = 'f' then 1 else null) as incorrect_answers").where("sections.year_offered = (params[:Year])").group("student_learning_outcomes.id")
+   @slos = Answer.joins(knowledge_topic: :student_learning_outcomes).select('student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").group('student_learning_outcomes.id', :is_correct)
+   # @slos_year = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.year_offered = ?", params[:year]).group('student_learning_outcomes.id', :is_correct)
    @slos_combined = Result.combine_table_lines(@slos)
     
     @slos_fall = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.semester = 'Fall' AND sections.year_offered = (params[:Year])" ).group('student_learning_outcomes.id', :is_correct)
