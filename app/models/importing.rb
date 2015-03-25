@@ -54,7 +54,6 @@ class Importing
 
   #Method called to load the data
   def self.uploadingClassQuizResults (course, instrFirstName, instrLastName, semester, file, courseYear, crn, courseNumber, section)
-  
     
     sheet1 = open_spreadsheet(file)
     currentRowIndex = 2 #Skip row of headers
@@ -502,13 +501,13 @@ class Importing
     
     
     sheet1 = open_spreadsheet(file)
-    index = 0 #Skip row of headers
     numberOfLines = sheet1.last_row
     
     for index in 5..numberOfLines
       	row = sheet1.row(index)
+      	studentID = row[0]
 
-      	if(row[0] =~ /^u\d+/i )
+      	if(studentID =~ /^u\d+/i )
       		stu = Student.find_or_create_by(w_number: row[2])
 
       		course_list.each {|c|
@@ -546,7 +545,6 @@ class Importing
         	}
 
         	# Save student information
-        	#stu.UID = row[0]
       		stu.act = row[64]
       		stu.act_math = row[63]
       		stu.mpl = row[62]
