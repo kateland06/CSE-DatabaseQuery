@@ -1,0 +1,32 @@
+Grades of students with gender = male.
+
+http://localhost:3000/query/results?dattribute[]=gender&dcondition[]==%22%3Cp%3EMale%3C/p%3E%22&range=sections&rattribute=grade&rcondition[]==%22A%22&rcondition[]==%22B%22&rcondition[]==%22C%22&rcondition[]==%22D%22&rcondition[]==%22F%22
+
+Grades of students with ACT > 20.
+
+http://localhost:3000/query/results?dattribute[]=act&dcondition[]=%3E%2220%22&range=sections&rattribute=grade&rcondition[]==%22A%22&rcondition[]==%22B%22&rcondition[]==%22C%22&rcondition[]==%22D%22&rcondition[]==%22F%22
+
+Grades of students with ethnicity = white.
+
+http://localhost:3000/query/results?dattribute[]=ethnicity&dcondition[]==%22%3Cp%3EWhite%20%28not%20hispanic%29%3C/p%3E%22&range=sections&rattribute=grade&rcondition[]==%22A%22&rcondition[]==%22B%22&rcondition[]==%22C%22&rcondition[]==%22D%22&rcondition[]==%22F%22
+
+Grades of students with ACT math > 20 and high school GPA > 2.0.
+
+http://localhost:3000/query/results?dattribute[]=act_math&dattribute[]=high_school_gpa&dcondition[]=%3E%2220%22&dcondition[]=%3E%222.0%22&range=sections&rattribute=grade&rcondition[]==%22A%22&rcondition[]==%22B%22&rcondition[]==%22C%22&rcondition[]==%22D%22&rcondition[]==%22F%22
+
+Grades of students with MPL between 4 and 7.
+
+http://localhost:3000/query/results?dattribute[]=mpl&dcondition[]=%20BETWEEN%224%22AND%227%22&range=sections&rattribute=grade&rcondition[]==%22A%22&rcondition[]==%22B%22&rcondition[]==%22C%22&rcondition[]==%22D%22&rcondition[]==%22F%22
+
+Quiz scores of students.
+
+http://localhost:3000/query/results?range=sections&rattribute=quiz_score&rcondition[]=%3E=%22.9%22&rcondition[]=%20BETWEEN%22.8%22AND%22.899%22&rcondition[]=%20BETWEEN%22.7%22AND%22.799%22&rcondition[]=%20BETWEEN%22.6%22AND%22.699%22&rcondition[]=%3C%22.6%22
+
+Quiz scores of students with ACT > 20 and high school GPA > 3.0.
+
+http://localhost:3000/query/results?literal=true&dattribute[]=act&dcondition[]=%3E%2220%22AND%20&dattribute[]=high_school_gpa&dcondition[]=%3E%223.0%22&range=sections&rattribute=quiz_score&rcondition[]=%3E=%22.9%22&rcondition[]=%20BETWEEN%22.8%22AND%22.899%22&rcondition[]=%20BETWEEN%22.7%22AND%22.799%22&rcondition[]=%20BETWEEN%22.6%22AND%22.699%22&rcondition[]=%3C%22.6%22
+
+Grades of students with (ACT > 20 and high school GPA > 3.5) or (ACT > 28 and high school GPA > 3.0).
+
+http://localhost:3000/query/results?literal=true&dattribute[]=act&dcondition[]=%3E%2220%22AND%20&dattribute[]=high_school_gpa&dcondition[]=%3E%223.5%22%29OR%28&dattribute[]=act&dcondition[]=%3E%2228%22AND%20&dattribute[]=high_school_gpa&dcondition[]=%3E%223.0%22&range=sections&rattribute=grade&rcondition[]==%22A%22&rcondition[]==%22B%22&rcondition[]==%22C%22&rcondition[]==%22D%22&rcondition[]==%22F%22
+
