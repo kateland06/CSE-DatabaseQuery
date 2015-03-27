@@ -3,6 +3,7 @@ class QueryController < ApplicationController
 	end
 	
 	def results
+		@subdomain = params[:subdomain]
 		@dattributes = params[:dattribute]
 		@dconditions = params[:dcondition]
 		@range = params[:range]
@@ -15,7 +16,12 @@ class QueryController < ApplicationController
 			@dconditions = []
 		end
 		
-		results = Student.joins(@range.to_sym)
+		if @subdomain != nil
+			results = Student.joins(@subdomain.to_sym, @range.to_sym)
+		else
+			results = Student.joins(@range.to_sym)
+		end
+			
 		if literal
 			clause = "("
 			@dattributes.zip(@dconditions).each do | dattr, dcond |

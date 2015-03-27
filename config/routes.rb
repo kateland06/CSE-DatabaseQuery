@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :program_educational_objectives
 
   resources :knowledge_topics
+  
+  resources :prerequisites
 
   get 'importing/index'
   get 'importing', to: 'importing#index'

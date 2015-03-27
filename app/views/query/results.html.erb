@@ -1,6 +1,6 @@
 <h1>Query Results</h1>
 
-<p><%= @rattribute %> of students with (
+<p><%= @rattribute %> of students with <%= @subdomain %> (
 	<% @dattributes.zip(@dconditions).each do | dattr, dcond | %>
 		<%= dattr %> <%= dcond %>
 	<% end %>
