@@ -1,0 +1,12 @@
+<h1>Query</h1>
+
+<p>Use "query/results" to query.</p>
+<p>URL params:</p>
+<ul>
+	<li>dattribute: An array of attributes to condition on within the domain.</li>
+	<li>dcondition: An array of conditions to apply to the dattributes. Each dattribute should have a corresponding dcondition.</li>
+	<li>range: The range in which the results will be searched upon. <strong>REQUIRED</strong></li>
+	<li>rattribute: The specific attribute in which the results will be focused on. <strong>REQUIRED</strong></li>
+	<li>rcondition: An array of condiitions to apply to the rattributes. Each rattribute should have a corresponding rcondition. <strong>REQUIRED</strong></li>
+	<li>literal: A boolean value. If this is set to true, the dattributes with their dconditions will be linked by SQL conjunctions/disjunctions. Therefore you must include these in the conditions if you want to use literal!
+</ul>
