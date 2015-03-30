@@ -13,7 +13,7 @@
     <% @program_of_studies.each do |program_of_study| %>
       <tr>
         <td><%= program_of_study.program %></td>
-        <td><%= program_of_study.section %></td>
+        <td><%= program_of_study.section.section %></td>
         <td><%= link_to 'Show', program_of_study %></td>
         <td><%= link_to 'Edit', edit_program_of_study_path(program_of_study) %></td>
         <td><%= link_to 'Destroy', program_of_study, method: :delete, data: { confirm: 'Are you sure?' } %></td>

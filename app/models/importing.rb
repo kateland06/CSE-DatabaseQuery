@@ -58,8 +58,8 @@ class Importing
     sheet1 = open_spreadsheet(file)
     currentRowIndex = 2 #Skip row of headers
     numberOfLines = sheet1.last_row
-    
-    # loop for each student in the file
+
+    # for each student import quiz results
     while (currentRowIndex < numberOfLines) do
       currentRow = sheet1.row(currentRowIndex)
       
@@ -112,14 +112,14 @@ class Importing
       
         while(rowContent[10].include? "Program of study") do
             if (rowContent[15].eql? "Checked")
-              programsOfStudy.push rowContent[14]
+              programsOfStudy.push ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end        
             currentRowIndex += 1
             rowContent = sheet1.row(currentRowIndex)
         end
                 
         #Remove this with update to remove UID question
-        if ( rowContent.include? "Student identification") 
+        if ( rowContent[10].include? "Student identification") 
             currentRowIndex += 1
             rowContent = sheet1.row(currentRowIndex)
         end
@@ -127,7 +127,7 @@ class Importing
         #Academic Progress
         while(rowContent[10].include? "Academic progress") do
             if (rowContent[15].eql? "Checked")
-                acaProgress = rowContent[14]
+                acaProgress = ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end
             currentRowIndex += 1
             rowContent = sheet1.row(currentRowIndex)
@@ -136,7 +136,7 @@ class Importing
         #Gender
         while (rowContent[10].include? "Gender") do
             if (rowContent[15].eql? "Checked")
-                gender = rowContent[14]
+                gender = ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end
             currentRowIndex += 1
             rowContent = sheet1.row(currentRowIndex)
@@ -145,7 +145,7 @@ class Importing
         #Ethnicity
         while (rowContent.include? "Ethnicity" ) do
             if (rowContent[15].eql? "Checked")
-                ethnicity = rowContent[14]
+                ethnicity = ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end
             currentRowIndex += 1
             rowContent = sheet1.row(currentRowIndex)
@@ -182,7 +182,7 @@ class Importing
   def self.getInitialExperienceRowIndex( sheet1, currentRowIndex)
       
       rowContent = sheet1.row(currentRowIndex)
-      until (rowContent[10].eql? "Initial experience")
+      until (rowContent[10] =~ /Initial experience/i)
             currentRowIndex += 1
             rowContent = sheet1.row(currentRowIndex)
       end
@@ -432,14 +432,14 @@ class Importing
     #Each Question in this section
     until (currentRow[7])
       qNum = currentRow[8].to_i
-      qTitle = currentRow[11]
+      qTitle = ActionController::Base.helpers.sanitize(currentRow[11], :tags=>[])
       qKnowTopic = currentRow[10]
       correct = false
       
       # Find the answer
       while (currentRow[8].to_i == qNum) do 
           if (currentRow[15].eql? "Checked")
-              qAnswer = currentRow[14]
+              qAnswer = ActionController::Base.helpers.sanitize(currentRow[14], :tags=>[])
               if (currentRow[16].to_i > 0)
                   correct = true
                   numQuestionsCorrect += 1
@@ -468,7 +468,7 @@ class Importing
 
     while (currentRow[10].include? "Prerequisite course") do
         if (currentRow[15].eql? "Checked") 
-            prCourse = currentRow[14]
+            prCourse = ActionController::Base.helpers.sanitize(currentRow[14], :tags=>[])
         end
         currentRowIndex+= 1
         currentRow = sheet1.row(currentRowIndex)
@@ -481,7 +481,7 @@ class Importing
     prSemester = "Other"
     while(currentRow[10].include? "Term of prerequisite course") do
         if (currentRow[15].eql? "Checked") 
-            prSemester = currentRow[14]
+            prSemester = ActionController::Base.helpers.sanitize(currentRow[14], :tags=>[])
         end
         currentRowIndex += 1
         currentRow = sheet1.row(currentRowIndex)

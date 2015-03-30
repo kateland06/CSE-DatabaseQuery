@@ -16,8 +16,8 @@
   <tbody>
     <% @prerequisites.each do |prerequisite| %>
       <tr>
-        <td><%= prerequisite.section %></td>
-        <td><%= prerequisite.student %></td>
+        <td><%= prerequisite.section.section %></td>
+        <td><%= prerequisite.student.w_id %></td>
         <td><%= prerequisite.course %></td>
         <td><%= prerequisite.year_taken %></td>
         <td><%= prerequisite.faculty %></td>
