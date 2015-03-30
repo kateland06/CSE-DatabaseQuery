@@ -1,0 +1,28 @@
+<h1>Query Results</h1>
+
+<p><%= @rattribute %> of students with <%= @subdomain %> (
+	<% @dattributes.zip(@dconditions).each do | dattr, dcond | %>
+		<%= dattr %> <%= dcond %>
+	<% end %>
+	)
+</p>
+
+<p>Eventually we'll have a beautiful chart here...</p>
+
+<table>
+  <thead>
+    <tr>
+		<td><%= @rattribute %></td>
+		<td>Count</td>
+    </tr>
+  </thead>
+
+  <tbody>
+	<% for rcond in @rconditions %>
+		<tr>
+			<td><%= rcond %></td>
+			<td><%= @counts.shift %></td>
+		</tr>
+	<% end %>
+  </tbody>
+</table>
