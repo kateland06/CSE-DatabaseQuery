@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :program_educational_objectives
 
   resources :knowledge_topics
+  
+  resources :prerequisites
 
   get 'importing/index'
   get 'importing', to: 'importing#index'
@@ -36,7 +38,6 @@ Rails.application.routes.draw do
   get 'results/answers'
   get 'results/search', to: 'results#answers'
   post 'results/search', to: 'results#search'
-  get 'results/query', to: 'results#query'
 
   get 'results/abetReportYear'
   get 'results/abetReportYear', to: 'results#reportABETY'
@@ -45,8 +46,10 @@ Rails.application.routes.draw do
   get 'results/abetReportYearSemester'
   get 'results/abetReportYearSemester', to: 'results#reportABETYS'
   post 'results/abetReportYearSemester', to: 'results#abetReportYearSemester'
-  
 
+  get 'query', to: 'query#index'
+  get 'query/index'
+  get 'query/results', to: 'query#results'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
