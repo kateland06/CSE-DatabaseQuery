@@ -1,8 +1,7 @@
 #banner {
 	background: #4b4b4b url(http://cecs.wright.edu/sites/all/themes/cecs/img/wild_oliva.jpg) top left repeat fixed;
 	box-shadow: inset 0px 0px 25px 0px rgba(0,0,0,.5);
-	color: #bbb;
-        border-radius: 10px;	
+	color: #bbb;	
 }
 
 #banner_link {
@@ -18,20 +17,3 @@
     border-radius: 10px;
 }
 
-#body {
-	background-image: url(https://cse.wright.edu/sites/default/files/Russ.jpg);
-}
-
-#ba2{
-     background: #1E4402;
-     padding: 20px;
-     border-radius: 10px;
-     width: 50%
-}
-
-#marilyn2 {
-    background: #fc0; 
-    padding: 20px;
-    border-radius: 10px;
-    width: 50%;
-}
