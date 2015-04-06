@@ -16,10 +16,10 @@
   <tbody>
     <% @answers.each do |answer| %>
       <tr>
-        <td><%= answer.question %></td>
-        <td><%= answer.section %></td>
-        <td><%= answer.student %></td>
-        <td><%= answer.knowledge_topic %></td>
+        <td><%= answer.question.question_text %></td>
+        <td><%= answer.section.section %></td>
+        <td><%= answer.student.w_number %></td>
+        <td><%= answer.knowledge_topic.knowledge_topic %></td>
         <td><%= answer.is_correct %></td>
         <td><%= answer.answer_text %></td>
         <td><%= link_to 'Show', answer %></td>
