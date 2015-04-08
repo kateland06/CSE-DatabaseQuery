@@ -112,6 +112,7 @@ class Importing
       
         while(rowContent[10].include? "Program of study") do
             if (rowContent[15].eql? "Checked")
+              rowContent[14].gsub!("&nbsp;", " ")
               programsOfStudy.push ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end        
             currentRowIndex += 1
@@ -127,6 +128,7 @@ class Importing
         #Academic Progress
         while(rowContent[10].include? "Academic progress") do
             if (rowContent[15].eql? "Checked")
+            	rowContent[14].gsub!("&nbsp;", " ")
                 acaProgress = ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end
             currentRowIndex += 1
@@ -136,6 +138,7 @@ class Importing
         #Gender
         while (rowContent[10].include? "Gender") do
             if (rowContent[15].eql? "Checked")
+            	rowContent[14].gsub!("&nbsp;", " ")
                 gender = ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end
             currentRowIndex += 1
@@ -145,6 +148,7 @@ class Importing
         #Ethnicity
         while (rowContent.include? "Ethnicity" ) do
             if (rowContent[15].eql? "Checked")
+            	rowContent[14].gsub!("&nbsp;", " ")
                 ethnicity = ActionController::Base.helpers.sanitize(rowContent[14], :tags=>[])
             end
             currentRowIndex += 1
@@ -433,6 +437,7 @@ class Importing
     until (currentRow[7])
       qNum = currentRow[8].to_i
       qTitle = ActionController::Base.helpers.sanitize(currentRow[11], :tags=>[])
+      qTitle.gsub!("&nbsp;", " ")
       qKnowTopic = currentRow[10]
       correct = false
       
@@ -440,6 +445,7 @@ class Importing
       while (currentRow[8].to_i == qNum) do 
           if (currentRow[15].eql? "Checked")
               qAnswer = ActionController::Base.helpers.sanitize(currentRow[14], :tags=>[])
+              qAnswer.gsub!("&nbsp;", " ")
               if (currentRow[16].to_i > 0)
                   correct = true
                   numQuestionsCorrect += 1
@@ -469,6 +475,7 @@ class Importing
     while (currentRow[10].include? "Prerequisite course") do
         if (currentRow[15].eql? "Checked") 
             prCourse = ActionController::Base.helpers.sanitize(currentRow[14], :tags=>[])
+            prCourse.gsub!("&nbsp;", " ")
         end
         currentRowIndex+= 1
         currentRow = sheet1.row(currentRowIndex)
@@ -482,6 +489,7 @@ class Importing
     while(currentRow[10].include? "Term of prerequisite course") do
         if (currentRow[15].eql? "Checked") 
             prSemester = ActionController::Base.helpers.sanitize(currentRow[14], :tags=>[])
+            prSemester.gsub!("&nbsp;", " ")
         end
         currentRowIndex += 1
         currentRow = sheet1.row(currentRowIndex)
