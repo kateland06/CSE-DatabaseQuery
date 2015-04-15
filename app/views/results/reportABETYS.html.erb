@@ -125,6 +125,21 @@ In addition to being able to look at the Student Learning Outcomes as a collecti
 
 # Removed the SLO_Combined_Semester section because it is not applicable when we select a particular semester
 
+
+# ---------------------- KT's Correct vs Incorrect ----------------
+
+<br><br>
+<h2>SLO combine table</h2>
+<%= render partial: "result_summation_table_kt", locals: {results: @kts_combined}%>
+<br><br>
+
+# ---------------------- KT's Correct vs Incorrect Percentage ----------------
+
+<h2>KTs by Percentage</h2>
+<%= render partial: "results_by_percentage_kt", locals: {results: @kts_percentages}%>
+<br><br><br><br>
+
+
 # --------------------  SLO's by percentage -------------------------------
 
 <br><br>
