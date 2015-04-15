@@ -122,6 +122,19 @@ In addition to being able to look at the Student Learning Outcomes as a collecti
 <%= render partial: "result_summation_table", locals: {results: @slos_combined}%>
 <br><br>
 
+# ---------------------- KT's Correct vs Incorrect ----------------
+
+<br><br>
+<h2>SLO combine table</h2>
+<%= render partial: "result_summation_table_kt", locals: {results: @kts_combined}%>
+<br><br>
+
+# ---------------------- KT's Correct vs Incorrect Percentage ----------------
+
+<h2>KTs by Percentage</h2>
+<%= render partial: "results_by_percentage_kt", locals: {results: @kts_percentages}%>
+<br><br><br><br>
+
 
 # ----------------------- SLO's per semester -----------------------
 
