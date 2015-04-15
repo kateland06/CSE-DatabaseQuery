@@ -33,14 +33,14 @@ class ResultsController < ApplicationController
   
   def abetReportYear
     
-   # year = params[:year]
+   #year = params[:year]
     
    # @slos = Answer.joins(knowledge_topic: :student_learning_outcomes).select("student_learning_outcomes.title","count(*) as total_answers","count(case when is_correct = 't' then 1 else null) as correct_answers","count(case when is_correct = 'f' then 1 else null) as incorrect_answers").where("sections.year_offered = (params[:Year])").group("student_learning_outcomes.id")
    @slos = Answer.joins(knowledge_topic: :student_learning_outcomes).select('student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").group('student_learning_outcomes.id', :is_correct)
    # @slos_year = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.year_offered = ?", params[:year]).group('student_learning_outcomes.id', :is_correct)
    @slos_combined = Result.combine_table_lines(@slos)
     
-    @slos_fall = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.semester = 'Fall' AND sections.year_offered = (params[:Year])" ).group('student_learning_outcomes.id', :is_correct)
+    @slos_fall = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.semester = 'Fall' AND sections.year_offered = (params[:Year])").group('student_learning_outcomes.id', :is_correct)
     @slos_spring = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.semester = 'Spring' AND sections.year_offered = (params[:Year])" ).group('student_learning_outcomes.id', :is_correct)
     @slos_summer = @slos.joins(:section).select( 'student_learning_outcomes.title', :is_correct, "count(answers.id) AS total_answers").where("sections.semester = 'Summer' AND sections.year_offered = (params[:Year])" ).group('student_learning_outcomes.id', :is_correct)
     @slos_combined_semesters = Result.combine_table_lines_with_semesters(@slos_fall, @slos_spring, @slos_summer)
@@ -61,6 +61,7 @@ class ResultsController < ApplicationController
     
     @kts = Answer.joins(:knowledge_topic, :Section).select( 'knowledge_topics.knowledge_topic AS title', :is_correct, "count(answers.id) AS total_answers").where("sections.year_offered = (params[:Year])").group(:knowledge_topic, :is_correct)
     @kts_combined = Result.combine_table_lines(@kts)
+    @kts_percentages = Result.make_percentages(@kts_combined)
     
     @questions = Answer.joins(:question, :Section).select( 'question_text AS title', :is_correct, "count(answers.id) AS total_answers").where("sections.year_offered = (params[:Year])").group(:question_text, :is_correct)
     @questions_combined = Result.combine_table_lines(@questions)
@@ -95,6 +96,7 @@ class ResultsController < ApplicationController
     
     @kts = Answer.joins(:knowledge_topic, :Section).select( 'knowledge_topics.knowledge_topic AS title', :is_correct, "count(answers.id) AS total_answers").where("sections.year_offered = (params[:Year]) AND sections.semester = (params[:Semester]").group(:knowledge_topic, :is_correct)
     @kts_combined = Result.combine_table_lines(@kts)
+    @kts_percentages = Result.make_percentages(@kts_combined)
     
     @questions = Answer.joins(:question, :Section).select( 'question_text AS title', :is_correct, "count(answers.id) AS total_answers").where("sections.year_offered = (params[:Year]) AND sections.semester = (params[:Semester]").group(:question_text, :is_correct)
     @questions_combined = Result.combine_table_lines(@questions)
@@ -105,8 +107,3 @@ class ResultsController < ApplicationController
     
     
 end
-
-
-
-
-
