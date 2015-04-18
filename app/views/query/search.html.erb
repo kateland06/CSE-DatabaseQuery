@@ -1,0 +1,21 @@
+<h1>Query Results</h1>
+
+<p>Eventually we'll have a beautiful chart here...</p>
+
+<table>
+  <tbody>
+	<% @counts.zip(@groups).each do | item, group | %>
+		<tr><td colspan=2><%= @rattribute %> of students with <%= @subdomain %> (<%= group[:dattribute] %> <%= group[:dcondition] %>)</td></tr>
+		<tr>
+			<td><%= @rattribute %></td>
+			<td>Count</td>
+		</tr>
+		<% item.zip(@rconditions).each do | result, rcond | %>
+			<tr>
+				<td><%= rcond %></td>
+				<td><%= result %></td>
+			</tr>
+		<% end %>
+	<% end %>
+  </tbody>
+</table>
