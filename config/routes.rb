@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   get 'query', to: 'query#index'
   get 'query/index'
   get 'query/results', to: 'query#results'
+  get 'query/search', to: 'query#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
