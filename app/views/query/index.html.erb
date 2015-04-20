@@ -1,6 +1,5 @@
 <h1>Query</h1>
 
-<p>Use "query/results" to query.</p>
 <p>URL params:</p>
 <ul>
 	<li>subdomain: The domain table to query against in conjunction with the student table.</li>
@@ -10,4 +9,15 @@
 	<li>rattribute: The specific attribute in which the results will be focused on. <strong>REQUIRED</strong></li>
 	<li>rcondition: An array of condiitions to apply to the rattributes. Each rattribute should have a corresponding rcondition. <strong>REQUIRED</strong></li>
 	<li>literal: A boolean value. If this is set to true, the dattributes with their dconditions will be linked by SQL conjunctions/disjunctions. Therefore you must include these in the conditions if you want to use literal!
+</ul>
+<p>Visualization Params:</p>
+<ul>
+	<li>v_type: The type of visualization to display. See type options below.</li>
+	<li>v_data: The representation of the data. Can either be "count" (default) or "percent". This parameter only applies if the v_type is stacked.
+</ul>
+<p>Visualization Types:</p>
+<ul>
+	<li>histogram: This is the default option. A visualization with data in separate columns. Can only display counts.</li>
+	<li>stacked: A stacked histogram visualization where data is stacked. Data is stacked into columns by comparison groups. Can display counts or percents.</li>
+	<li>polar: A polar coordinates visualization of the data. Can only display counts.</li>
 </ul>

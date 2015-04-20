@@ -1,0 +1,78 @@
+Grades of students with ACT math > 20 and high school GPA > 2.0.
+Graph: Histogram
+
+params = {group: [{dattribute: ["act_math", "high_school_gpa"], dcondition: [">'20'", ">'2.0'"], name: "ACT range (20, inf) AND HS GPA range (2.0, inf)"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"]}
+v_type = "histogram"
+v_data = "count"
+
+Grades of students with MPL between 4 and 7.
+Graph: Histogram
+
+params = {group: [{dattribute: ["mpl"], dcondition: ["BETWEEN '4' AND '7'"], name: "MPL range [4, 7]"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"]}
+v_type = "histogram"
+v_data = "count"
+
+Quiz scores of students.
+Graph: Histogram
+
+params = {group: [{}], range: "sections", rattribute: "quiz_score", rcondition: [">= '0.9'", "BETWEEN '0.8' AND '0.899'", "BETWEEN '0.7' AND '0.799'", "BETWEEN '0.6' AND '0.699'", "< '0.6'"]}
+v_type = "histogram"
+v_data = "count"
+
+Grades of students with (ACT > 20 and high school GPA > 3.5) or (ACT > 28 and high school GPA > 3.0).
+Graph: Histogram
+
+params = {group: [{dattribute: ["act",  "high_school_gpa", "act", "high_school_gpa"], dcondition: ["> '20' AND", "> '3.5') OR (", "> '28' AND", "> '3.0'"], name: "(ACT range (20, inf) AND HS GPA range (3.5, inf) OR (ACT range (28, inf) AND HS GPA range (3.0, inf))"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"], literal: true}
+v_type = "histogram"
+v_data = "count"
+
+Grades of students in group1, group2, and group3.
+Group 1: Section = CS 1181
+Group 2: Section = CS 1180
+Group 3: Section = CEG 3310
+Graph: Stacked (count)
+
+params = {group: [{subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1181'"], name: "Section = CS 1181"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1180'"], name: "Section = CS 1180"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CEG 3310'"], name: "Section = CEG 3310"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"], literal: true}
+v_type = "stacked"
+v_data = "count"
+
+Grades of students in group1, group2, and group3.
+Group 1: Section = CS 1180
+Group 2: Section = CS 1181
+Group 3: Section = CEG 3310
+Graph: Polar Coordinates
+
+params = {group: [{subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1180'"], name: "Section = CS 1180"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1181'"], name: "Section = CS 1181"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CEG 3310'"], name: "Section = CEG 3310"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"], literal: true}
+v_type = "polar"
+v_data = "count"
+
+Grades of students in group1 and group2.
+Group 1: ACT range (20, 25]
+Group 2: ACT range (15, 20]
+Graph: Polar Coordinates
+
+params = {group: [{dattribute: ["act", "act"], dcondition: [">'20'", "<='25'"], name: "ACT range (20, 25]"}, {dattribute: ["act", "act"], dcondition: [">'15'", "<='20'"], name: "ACT range (15, 20]"}], range: "sections", rattribute: "grade", rcondition: ["='A'", "='B'", "='C'", "='D'", "='F'"]}
+v_type = "polar"
+v_data = "count"
+
+Grades of students in group1, group2, and group3.
+Group 1: ACT range (20, 25]
+Group 2: ACT range (15, 20]
+Group 3: ACT range (25, inf)
+Graph: Stacked (percent)
+
+params = {group: [{dattribute: ["act", "act"], dcondition: [">'20'", "<='25'"], name: "ACT range (20, 25]"}, {dattribute: ["act", "act"], dcondition: [">'15'", "<='20'"], name: "ACT range (15, 20]"}, {dattribute: ["act"], dcondition: [">'25'"], name: "ACT range (25, inf)"}], range: "sections", rattribute: "grade", rcondition: ["='A'", "='B'", "='C'", "='D'", "='F'"]}
+v_type = "stacked"
+v_data = "percent"
+
+Grades of students in group1, group2, group3, group4, group5, group6.
+Group 1: Fall 2011
+Group 2: Spring 2012
+Group 3: Summer 2012
+Group 4: Fall 2012
+Group 5: Spring 2013
+Group 6: Summer 2013
+
+params = {group: [{subdomain: "sections", dattribute: ["semester", "year_offered"], dcondition: ["= 'Fall'", "= '2011'"], name: "Fall 2011"}, {subdomain: "sections", dattribute: ["semester", "year_offered"], dcondition: ["= 'Spring'", "= '2012'"], name: "Spring 2012"}, {subdomain: "sections", dattribute: ["semester", "year_offered"], dcondition: ["= 'Summer'", "= '2012'"], name: "Summer 2012"}, {subdomain: "sections", dattribute: ["semester", "year_offered"], dcondition: ["= 'Fall'", "= '2012'"], name: "Fall 2012"}, {subdomain: "sections", dattribute: ["semester", "year_offered"], dcondition: ["= 'Spring'", "= '2013'"], name: "Spring 2013"}, {subdomain: "sections", dattribute: ["semester", "year_offered"], dcondition: ["= 'Summer'", "= '2013'"], name: "Summer 2013"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"]}
+v_type = "polar"
+v_data = "count"
