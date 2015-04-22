@@ -1,3 +1,122 @@
+<head>
+	<title>Jq Tutorial</title>
+	<script type="text/javascript" src = "javascripts/jquery-1.11.2.min.js"></script>
+</head>
+<script type="text/javascript">
+$(function(){
+    $("#idattr").hide();
+	$("#idactm").hide();
+	$("#idethni").hide();
+	$("#idgender").hide();
+	$("#idgpa").hide();
+	$("#idmpl").hide();
+	$("#idwno").hide();
+	$("#idsem").hide();
+	$("#idfac").hide();
+	$("#idgrade").hide();
+	$("#idqs").hide();
+	$("#idap").hide();
+	$("#idgt").hide();
+	$("#idqst").hide();
+	$("#idcourse").hide();
+	$("#idqes").hide();
+	$("#special").click(function(){
+		$("#idattr").show();
+		$("#idactm").show();
+		$("#idethni").show();
+		$("#idgender").show();
+		$("#idgpa").show();
+		$("#idmpl").show();
+		$("#idwno").show();
+		
+	});
+	$("#sec").click(function(){
+		$("#idsem").show();
+		$("#idfac").show();
+		$("#idgrade").show();
+		$("#idqs").show();
+		$("#idap").show();
+		$("#idgt").show();
+		$("#idqst").show();
+	});
+	$("#prereq").click(function(){
+		$("#idcourse").show();
+	});
+	$("#hi").click(function(){
+		$("#idqes").show();
+	});
+	$("#idgrad").hide();
+	$("#idQS").hide();
+	$("#idCS").hide();
+	$("#idScore").hide();
+	$("#idSCORE").hide();
+	$("#idSCORee").hide();
+	$("#idsection").click(function(){
+		$("#idgrad").show();
+		$("#idQS").show();
+		$("#idCS").show();
+	});
+	$("#idSLO").click(function(){
+		$("#idScore").show();
+		
+	});
+	$("#idPEO").click(function(){
+		$("#idSCORE").show();
+		
+	});
+	$("#idKT").click(function(){
+		$("#idSCORee").show();
+		
+	});
+});
+</script>
+<style>
+body {
+			       background-image: url(https://cse.wright.edu/sites/default/files/Russ.jpg);
+			}
+</style>
+<body>
+
+<div id="banner">
+			<span title="return to Wright State College of Computer Science and Engineering"><a href="http://cecs.wright.edu/"><img src="http://cecs.wright.edu/sites/all/themes/cecs/img/logo3.png"/></a></span>
+			 
+			<br>
+			
+		</div>
+		<br>
+	<div id="ba2">	
+	 	 <h3>	
+		
+		<a class="myButton" href="/"><strong>Home page</strong></a>
+		<a class="myButton" href="/importing"><strong>Upload Results</strong></a>
+  		<a class="myButton" href="/results"><strong>Generate Report</strong></a>
+  		<a class="myButton" href="/query"><strong>Dynamic Query</strong></a>
+		<div class="dropdown">
+
+    <!-- trigger button -->
+    <button>Data</button>
+
+    <!-- dropdown menu -->
+    <ul class="dropdown-menu">
+        <li><a href="/sections">Sections</a></li>
+        <li><a href="/class_sections">Class Sections</a></li>
+        <li><a href="/answers">Answers</a></li>
+		<li><a href="/slo_covered_by_kts">SLO covered by KTS</a></li>
+		<li><a href="/fulfills">Fulfills</a></li>
+		<li><a href="/program_of_studies">Program of Studies</a></li>
+		<li><a href="/students">Students</a></li>
+		<li><a href="/questions">Questions</a></li>
+		<li><a href="/student_learning_outcomes">Students Learning Outcomes</a></li>
+		<li><a href="/">Program Educational Objectives</a></li>
+		<li><a href="/knowlwedge_topics">Knowledge Topics</a></li>
+		<li><a href="/prerequisites">Prerequisites</a></li>
+    </ul>
+</div>
+
+         </h3>
+		 </div>
+	<br>
+	<div id="marilyn">
 <h1>Query</h1>
 
 <p>URL params:</p>
@@ -11,6 +130,7 @@
 	<li>rcondition: An array of condiitions to apply to the rattributes. Each rattribute should have a corresponding rcondition. <strong>REQUIRED</strong></li>
 	<li>literal: A boolean value. If this is set to true, the dattributes with their dconditions will be linked by SQL conjunctions/disjunctions. Therefore you must include these in the conditions if you want to use literal!
 </ul>
+
 <p>Visualization Params:</p>
 <ul>
 	<li>v_type: The type of visualization to display. See type options below.</li>
@@ -22,3 +142,129 @@
 	<li>stacked: A stacked histogram visualization where data is stacked. Data is stacked into columns by comparison groups. Can display counts or percents.</li>
 	<li>polar: A polar coordinates visualization of the data. Can only display counts.</li>
 </ul>
+</div>
+<br>
+<div id="marilyn3">
+	<h2>Domains</h2>
+	<br>
+	<button class="myButton" id = "special" class = "bold small">student</button>
+<br>
+<button class="myButton" id = "sec">section</button>
+<br>
+<button class="myButton" id = "prereq">prerequisite</button>
+<br>
+<button class="myButton" id = "hi">questions</button>
+<br>
+
+
+</div>
+<div id="marilyn4">
+	<h2>Attributes</h2>
+	<button class="myButton" id = "idattr">act</button>
+	<br>
+	<button class="myButton" id = "idactm">act math</button>
+	<br>
+	<button class="myButton" id = "idethni">ethnicity</button>
+	<br>
+	<button class="myButton" id = "idgender">gender</button>
+	<br>
+	<button class="myButton" id = "idgpa">high school gpa</button>
+	<br>
+	<button class="myButton" id = "idmpl">mpl</button>
+	<br>
+	<button class="myButton" id = "idwno">w number</button>
+	<br>
+	<button class="myButton" id = "idsem">semester</button>
+	<br>
+	<button class="myButton" id = "idfac">faculty</button>
+	<br>
+	<button class="myButton" id = "idgrade">grade</button>
+	<br>
+	<button class="myButton" id = "idqs">quiz score</button>
+	<br>
+	<button class="myButton" id = "idap">academic progress</button>
+	<br>
+	<button class="myButton" id = "idgt">grade tin</button>
+	<br>
+	<button class="myButton" id = "idqst">quiz score tin</button>
+	<br>
+	<button class="myButton" id = "idcourse">course</button>
+	<br>
+	<button class="myButton" id = "idqes">question</button>
+</div>
+<div id="marilyn4">
+	<h2>operation</h2>
+	<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
+	
+</div>
+<div id="marilyn4">
+	<h2>query</h2>
+	<br>
+<form action="">
+<input type="text">
+
+</form>
+<br>	
+	
+</div>
+
+<div id="marilyn3">
+	<h2>Ranges</h2>
+	<br>
+	<button class="myButton" id = "idsection" class = "bold small">section</button>
+<br>
+<button class="myButton" id = "idSLO">SLO</button>
+<br>
+<button class="myButton" id = "idPEO">PEO</button>
+<br>
+<button class="myButton" id = "idKT">KT</button>
+<br>
+</div>
+
+<div id="marilyn4">
+	<h2>Attributes</h2>
+	<button class="myButton" id = "idgrad">grade</button>
+	<br>
+	<button class="myButton" id = "idQS">Quiz Score</button>
+	<br>
+	<button class="myButton" id = "idCS">core sequence</button>
+	<br>
+	<button class="myButton" id = "idScore">score</button>
+	<br>
+	<button class="myButton" id = "idSCORE">score</button>
+	<br>
+	<button class="myButton" id = "idSCORee">score</button>
+	
+</div>
+
+<div id="marilyn4">
+	<h2>operation</h2>
+	<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
+	
+</div>
+<div id="marilyn5">
+	<h2>query</h2>
+	<br>
+<form action="">
+<input type="text">
+
+</form>
+<br> 	
+	
+</div>
+
+	<button class="myButton" id = "idSubmit">submit</button>
+
+>>>>>>> Stashed changes
