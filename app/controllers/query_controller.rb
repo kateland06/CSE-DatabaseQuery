@@ -46,7 +46,7 @@ class QueryController < ApplicationController
 		render "/query/results"
 	end
 	
-	# Dynamic querying by GET or POST.
+	# Dynamic querying by POST.
 	def search
 		# These three lines for testing purposes only. Set the parameters for the query here.
 		# Ideally, these will all be set and determined by the form on the query/index page.
