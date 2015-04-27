@@ -42,7 +42,7 @@ Group 2: Section = CS 1181
 Group 3: Section = CEG 3310
 Graph: Polar Coordinates
 
-params = {group: [{subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1180'"], name: "Section = CS 1180"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1181'"], name: "Section = CS 1181"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CEG 3310'"], name: "Section = CEG 3310"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"], literal: true}
+params = {group: [{subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1180'"], name: "Section = CS 1180"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CS 1181'"], name: "Section = CS 1181"}, {subdomain: "sections", dattribute: ["course"], dcondition: ["= 'CEG 3310'"], name: "Section = CEG 3310"}], range: "sections", rattribute: "grade", rcondition: ["= 'A'", "= 'B'", "= 'C'", "= 'D'", "= 'F'"]}
 v_type = "polar"
 v_data = "count"
 
