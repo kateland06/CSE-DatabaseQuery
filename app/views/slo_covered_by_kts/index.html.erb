@@ -12,8 +12,8 @@
   <tbody>
     <% @slo_covered_by_kts.each do |slo_covered_by_kt| %>
       <tr>
-        <td><%= slo_covered_by_kt.student_learning_outcome %></td>
-        <td><%= slo_covered_by_kt.knowledge_topic %></td>
+        <td><%= slo_covered_by_kt.student_learning_outcome.title %></td>
+        <td><%= slo_covered_by_kt.knowledge_topic.knowledge_topic %></td>
         <td><%= link_to 'Show', slo_covered_by_kt %></td>
         <td><%= link_to 'Edit', edit_slo_covered_by_kt_path(slo_covered_by_kt) %></td>
         <td><%= link_to 'Destroy', slo_covered_by_kt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
